@@ -13,7 +13,7 @@
             android:name=".MainActivity_finsh"
             android:exported="false" />
         <activity
-            android:name=".MainActivity_rigister"
+            android:name=".MainActivity_register"
             android:exported="false" />
         <activity
             android:name=".MainActivity_sign_in"

@@ -40,7 +40,7 @@ public class MainActivity_sign_in extends AppCompatActivity {
                     Toast.makeText(MainActivity_sign_in.this,"Vui lòng nhập email và password",Toast.LENGTH_LONG).show();
                     return;
                 }
-
+                onClick_btnSignIn(txtEmail,txtPassword);
 
             }
         });

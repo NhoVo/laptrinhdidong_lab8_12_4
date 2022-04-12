@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btnsignin= findViewById(R.id.btnsignin);
-        btnregister= findViewById(R.id.btnregister);
+        btnregister= findViewById(R.id.btnregister1);
 
         btnsignin.setOnClickListener(new View.OnClickListener(){
 
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,MainActivity_rigister.class);
+                Intent intent = new Intent(MainActivity.this, MainActivity_register.class);
                 startActivity(intent);
             }
         });
