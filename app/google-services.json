@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "415198758987",
+    "project_id": "laptrinhdidong-bf7f2",
+    "storage_bucket": "laptrinhdidong-bf7f2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:415198758987:android:06287fed053afb3329e5ce",
+        "android_client_info": {
+          "package_name": "com.example.laptrinhdidong_lab8_12_4"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "415198758987-b1gaitsljgada3qf7qijffc9ev73di8r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.laptrinhdidong_lab8_12_4",
+            "certificate_hash": "c25fa57b970a0b6e60d4c45dcda207e56f403e3d"
+          }
+        },
+        {
+          "client_id": "415198758987-j10f6s02mcfsj2vrrgt1uhlkv6l5735f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJlgOOSmOiSbUHLtWD67jNJUyfK6My8cI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "415198758987-j10f6s02mcfsj2vrrgt1uhlkv6l5735f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
