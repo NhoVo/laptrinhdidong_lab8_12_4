@@ -52,6 +52,11 @@ public class MainActivity_sign_in extends AppCompatActivity {
             public void onSuccess(AuthResult authResult) {
                 Toast.makeText(MainActivity_sign_in.this, "Đăng nhập thành công. Xin chúc mừng bạn.", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity_sign_in.this,MainActivity_finsh.class);
+
+
+                Bundle bl = new Bundle();
+                bl.putString("email",email);
+                intent.putExtras(bl);
                 startActivity(intent);
             }
         });
