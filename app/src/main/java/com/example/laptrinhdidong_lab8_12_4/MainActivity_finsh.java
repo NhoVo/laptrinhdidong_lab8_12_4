@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -21,9 +22,10 @@ public class MainActivity_finsh extends AppCompatActivity {
     private int happy;
     private int sad;
     private int normal;
-    private int id;
 
-    private DatabaseHandler_Faces db;
+
+    private DatabaseFaces db;
+    private FacesDAO dao;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -37,6 +39,13 @@ public class MainActivity_finsh extends AppCompatActivity {
 
 
         auth=FirebaseAuth.getInstance();
+        // SQLite
+        db = Room.databaseBuilder(getApplicationContext(),DatabaseFaces.class,"faces-manager").allowMainThreadQueries().build();
+        //interface
+
+        dao= db.facesDAO();
+
+
 
         Bundle bl = getIntent().getExtras();
       final  String email = (String) bl.get("email");
@@ -51,12 +60,69 @@ public class MainActivity_finsh extends AppCompatActivity {
                 Toast.makeText(MainActivity_finsh.this,"Bạn đã hoàn thành", Toast.LENGTH_LONG).show(); }
         });
         imghappy.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View view) {
-                db.addContact(new Faces
-                        (email, happy+=1));
-                Toast.makeText(MainActivity_finsh.this, "Email: " + email + " - happy: " +happy, Toast.LENGTH_SHORT).show();
+                Faces faces = dao.findByEmail(email);
+                // check email
+                if(faces != null) {
+                    faces.setHappy(faces.getHappy() + 1);
+
+                    try {
+                        dao.updateFaces(faces);
+                    }catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+
+                    Toast.makeText(MainActivity_finsh.this, "Email: " + email + " - Happy: " + faces.getHappy(), Toast.LENGTH_SHORT).show();
+                } else {
+                    dao.saveFaces(new Faces(email, 1, 0, 0));
+                    Toast.makeText(MainActivity_finsh.this, email + " - Happy: 1", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+        imgsad.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Faces faces = dao.findByEmail(email);
+                // check email
+                if(faces != null) {
+                    faces.setUnhappy(faces.getUnhappy()+ 1);
+
+                    try {
+                        dao.updateFaces(faces);
+                    }catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+
+                    Toast.makeText(MainActivity_finsh.this, "Email: " + email + " - UnHappy: " + faces.getUnhappy(), Toast.LENGTH_SHORT).show();
+                } else {
+                    dao.saveFaces(new Faces(email, 0, 1, 0));
+                    Toast.makeText(MainActivity_finsh.this, email + " - UnHappy: 1", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+        imgnormal.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Faces faces = dao.findByEmail(email);
+                // check email
+                if(faces != null) {
+                    faces.setNormal(faces.getNormal()+ 1);
+
+                    try {
+                        dao.updateFaces(faces);
+                    }catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+
+                    Toast.makeText(MainActivity_finsh.this, "Email: " + email + " - Normal: " + faces.getNormal(), Toast.LENGTH_SHORT).show();
+                } else {
+                    dao.saveFaces(new Faces(email, 0, 0, 1));
+                    Toast.makeText(MainActivity_finsh.this, email + " - Normal: 1", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }

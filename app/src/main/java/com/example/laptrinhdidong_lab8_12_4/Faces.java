@@ -1,42 +1,39 @@
 package com.example.laptrinhdidong_lab8_12_4;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+@Entity
 public class Faces {
-    private  int id;
-    private String email;
-    private int happy;
-    private int sad;
-    private int normal;
+    @PrimaryKey
+    @NonNull
+    @ColumnInfo(name="email")
+    public String email;
+
+    @ColumnInfo(name="happy")
+    public int happy;
+
+    @ColumnInfo(name="unhappy")
+    public int unhappy;
+
+    @ColumnInfo(name="normal")
+    public int normal;
 
     public Faces() {
     }
 
-    public Faces(String email) {
-        this.email = email;
-    }
+    // email + face: happy
+//    public Faces(String email, int happy) {
+//        this.email = email;
+//        this.happy = happy;
+//    }
 
-    public Faces(String email, int happy) {
+    public Faces(String email, int happy, int unhappy, int normal) {
         this.email = email;
         this.happy = happy;
-    }
-
-    public Faces(int id, String email, int happy, int sad, int normal) {
-        this.id = id;
-        this.email = email;
-        this.happy = happy;
-        this.sad = sad;
+        this.unhappy = unhappy;
         this.normal = normal;
-    }
-
-    public Faces(int id) {
-        this.id = id;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getEmail() {
@@ -55,12 +52,12 @@ public class Faces {
         this.happy = happy;
     }
 
-    public int getSad() {
-        return sad;
+    public int getUnhappy() {
+        return unhappy;
     }
 
-    public void setSad(int sad) {
-        this.sad = sad;
+    public void setUnhappy(int unhappy) {
+        this.unhappy = unhappy;
     }
 
     public int getNormal() {

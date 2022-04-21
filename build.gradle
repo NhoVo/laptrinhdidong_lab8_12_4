@@ -5,12 +5,14 @@ buildscript {
         classpath "com.android.tools.build:gradle:7.0.4"
         classpath 'com.google.firebase:perf-plugin:1.4.1'
 
+
     }
     repositories {
         // Check that you have the following line (if not, add it):
         google()  // Google's Maven repository
         mavenCentral()
     }
+
 }
 
 
